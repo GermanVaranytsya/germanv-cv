@@ -27,8 +27,8 @@ export default {
   methods: {
     moveImage() {
       let random = twoSizes => Math.round(Math.random() * twoSizes);
-      this.imgTop = random(screen.height - this.imgHeight);
-      this.imgLeft = random(screen.width - this.imgWidth);
+      this.imgTop = random(window.innerHeight - this.imgHeight);
+      this.imgLeft = random(window.innerWidth - this.imgWidth);
     }
   }
 }
