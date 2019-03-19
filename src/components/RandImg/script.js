@@ -11,13 +11,23 @@ const vue = require("@/assets/images/vue.png");
         changeInterval: 1000
       }
     },
+    computed: {
+      imgStyle() {
+          return {
+            top: `${this.imgTop}px`,
+            left: `${this.imgLeft}px`,
+            height: `${this.imgHeight}px`,
+            width: `${this.imgWidth}px`
+          }
+        }
+    },
     created() {
       setInterval(this.moveImage, this.changeInterval);
     },
     methods: {
       moveImage() {
-        this.imgTop = Math.round(Math.random() * (screen.height - this.imgHeight));
-        this.imgLeft = Math.round(Math.random() * (screen.width - this.imgWidth));
+        this.imgTop = Math.round(Math.random() * (window.innerHeight - this.imgHeight));
+        this.imgLeft = Math.round(Math.random() * (window.innerWidth - this.imgWidth));
       }
     }
   }
