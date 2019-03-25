@@ -1,4 +1,5 @@
 <div class="randImg">
-    <img :style="imgStyle"
-         class="image" :src="selectedImage">
-  </div>
+    <img class="image" :style="image.style"
+         :src="image.src"
+         v-for="image in addedImage">
+</div>
