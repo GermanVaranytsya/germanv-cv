@@ -8,8 +8,6 @@ const js = require("@/assets/images/js.png");
 const photoshop = require("@/assets/images/photoshop.png");
 const webpack = require("@/assets/images/webpack.png");
 
-let nextId = 100;
-
 export default {
   name: "randImg",
   data() {
@@ -30,8 +28,7 @@ export default {
       imgLeft: -100,
       imgHeight: 64,
       imgWidth: 64,
-      changeInterval: 1000,
-      selectedImage: ''
+      changeInterval: 200
     }
   },
   // computed: {
@@ -45,7 +42,6 @@ export default {
   //   }
   // },
   created() {
-    this.randomImage();
     const randomImg = func => setInterval(func, this.changeInterval);
     randomImg(this.randomImage);
     randomImg(this.addImage);
@@ -58,7 +54,7 @@ export default {
     },
     randomPosition() {
       const randomPos = twoSizes => Math.round(Math.random() * twoSizes);
-      this.imgTop = randomPos(window.innerHeight - this.imgHeight);
+      this.imgTop = randomPos(window.innerHeight/2 - this.imgHeight);
       this.imgLeft = randomPos(window.innerWidth - this.imgWidth);
     },
     moveRandomImage() {
@@ -66,7 +62,7 @@ export default {
       randomImg(this.moveImage);
       this.randomImage();
     },
-    addImage(){
+    addImage() {
       this.addedImage.push({
         style: {
           top: `${this.imgTop}px`,
@@ -74,9 +70,8 @@ export default {
           height: `${this.imgHeight}px`,
           width: `${this.imgWidth}px`
         },
-        src: this.selectedImage,
-        id: nextId++
+        src: this.selectedImage
       });
-    },
+    }
   }
 }
