@@ -1,5 +1,7 @@
 <div class="randImg">
-    <img class="image" :style="image.style"
+    <img class="image"
+         v-if="image.style.display !== 'none'"
+         :style="image.style"
          :src="image.src"
          v-for="image in addedImage">
 </div>

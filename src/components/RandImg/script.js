@@ -38,13 +38,13 @@ export default {
     // setTimeout(clearInterval(randomImg(this.addImage)), 10000);
     randomImg(this.randomPosition);
   },
-  mounted() {
-    const newImages = this.addedImage.filter(image => {
-      return image.style.display !== 'none';
-    });
-
-    this.addedImage = newImages;
-  },
+  // mounted() {
+  //   const newImages = this.addedImage.filter(image => {
+  //     return image.style.display !== 'none';
+  //   });
+  //
+  //   this.addedImage = newImages;
+  // },
   // mounted: function () {
   //   if (this.addedImage[i] = {
   //     style: {display: `none`}
@@ -63,19 +63,18 @@ export default {
       this.imgLeft = randomPos(screen.width - this.imgWidth);
     },
     addImage() {
-      if (this.addedImage.length > 500) {
-        this.addedImage.splice(0, 300);
-      } else {
-        this.addedImage.push({
-          style: {
-            top: `${this.imgTop}px`,
-            left: `${this.imgLeft}px`,
-            height: `${this.imgHeight}px`,
-            width: `${this.imgWidth}px`
-          },
-          src: this.selectedImage
-        });
+      if (this.addedImage.length > 20) {
+        this.addedImage.shift() // remove oldest image (the first one in the array)
       }
+      this.addedImage.push({
+        style: {
+          top: `${this.imgTop}px`,
+          left: `${this.imgLeft}px`,
+          height: `${this.imgHeight}px`,
+          width: `${this.imgWidth}px`
+        },
+        src: this.selectedImage
+      });
     }
   }
 }
