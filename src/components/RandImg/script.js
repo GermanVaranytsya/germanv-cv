@@ -28,7 +28,7 @@ export default {
       imgLeft: -100,
       imgHeight: 64,
       imgWidth: 64,
-      changeInterval: 100
+      changeInterval: 250
     }
   },
   created() {
@@ -48,8 +48,8 @@ export default {
       this.imgLeft = randomPos(window.innerWidth - this.imgWidth);
     },
     addImage() {
-      if (this.addedImage.length > 1000) {
-        this.addedImage.splice(0, 500);
+      if (this.addedImage.length > 500) {
+        this.addedImage.splice(0, 300);
       } else {
         this.addedImage.push({
           style: {

@@ -1,1 +1,1 @@
-export default {  name: 'HelloWorld',  props: {    msg: String  }}
+const image = require("@/assets/logo.jpg");export default {  name: 'HelloWorld',  data(){    return{      image    }  },  props: {    msg: String  }}
