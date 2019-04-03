@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to my CV page"/>
+    <HelloWorld msg="WELCOME TO MY PAGE"/>
     <RandImg />
   </div>
 </template>

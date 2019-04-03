@@ -35,8 +35,23 @@ export default {
     const randomImg = func => setInterval(func, this.changeInterval);
     randomImg(this.randomImage);
     randomImg(this.addImage);
+    // setTimeout(clearInterval(randomImg(this.addImage)), 10000);
     randomImg(this.randomPosition);
   },
+  mounted() {
+    const newImages = this.addedImage.filter(image => {
+      return image.style.display !== 'none';
+    });
+
+    this.addedImage = newImages;
+  },
+  // mounted: function () {
+  //   if (this.addedImage[i] = {
+  //     style: {display: `none`}
+  //   }) {
+  //     this.addedImage.remove(this.addedImage[i]);
+  //   }
+  // },
   methods: {
     randomImage() {
       const idx = Math.floor(Math.random() * this.images.length);
@@ -44,8 +59,8 @@ export default {
     },
     randomPosition() {
       const randomPos = twoSizes => Math.round(Math.random() * twoSizes);
-      this.imgTop = randomPos(window.innerHeight / 3 - this.imgHeight);
-      this.imgLeft = randomPos(window.innerWidth - this.imgWidth);
+      this.imgTop = randomPos(screen.height / 10 - this.imgHeight);
+      this.imgLeft = randomPos(screen.width - this.imgWidth);
     },
     addImage() {
       if (this.addedImage.length > 500) {
