@@ -7,6 +7,7 @@ const illustrator = require("@/assets/images/illustrator.png");
 const js = require("@/assets/images/js.png");
 const photoshop = require("@/assets/images/photoshop.png");
 const webpack = require("@/assets/images/webpack.png");
+const jquery = require("@/assets/images/jquery.png");
 
 export default {
   name: "randImg",
@@ -21,51 +22,33 @@ export default {
         illustrator,
         js,
         photoshop,
-        webpack
+        webpack,
+        jquery
       ],
       addedImage: [],
       imgTop: -100,
       imgLeft: -100,
       imgHeight: 64,
       imgWidth: 64,
-      changeInterval: 250
+      changeInterval: 7500
     }
   },
   created() {
-    const randomImg = func => setInterval(func, this.changeInterval);
-    randomImg(this.randomImage);
-    randomImg(this.addImage);
-    // setTimeout(clearInterval(randomImg(this.addImage)), 10000);
-    randomImg(this.randomPosition);
+    let interval = setInterval(() => this.addImage(), 100);
+    setTimeout(() => clearInterval(interval), this.changeInterval);
+    setInterval(this.randomImage, 25);
+    setInterval(this.randomPosition, 100);
   },
-  // mounted() {
-  //   const newImages = this.addedImage.filter(image => {
-  //     return image.style.display !== 'none';
-  //   });
-  //
-  //   this.addedImage = newImages;
-  // },
-  // mounted: function () {
-  //   if (this.addedImage[i] = {
-  //     style: {display: `none`}
-  //   }) {
-  //     this.addedImage.remove(this.addedImage[i]);
-  //   }
-  // },
   methods: {
     randomImage() {
       const idx = Math.floor(Math.random() * this.images.length);
       this.selectedImage = this.images[idx];
     },
     randomPosition() {
-      const randomPos = twoSizes => Math.round(Math.random() * twoSizes);
-      this.imgTop = randomPos(screen.height / 10 - this.imgHeight);
-      this.imgLeft = randomPos(screen.width - this.imgWidth);
+      this.imgLeft = Math.round(Math.random() * (window.innerWidth - this.imgWidth));
+      this.imgTop = Math.round(Math.random() * ((window.innerHeight/4) - this.imgTop));
     },
     addImage() {
-      if (this.addedImage.length > 20) {
-        this.addedImage.shift() // remove oldest image (the first one in the array)
-      }
       this.addedImage.push({
         style: {
           top: `${this.imgTop}px`,
