@@ -1,0 +1,1 @@
+export default {  name: 'LoadingPage',  data() {    return {      isLoading: true    }  },  mounted() {    setTimeout(() => {      this.isLoading = false    }, 3000)  }}

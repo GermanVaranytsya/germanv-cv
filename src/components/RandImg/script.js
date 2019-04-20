@@ -30,14 +30,14 @@ export default {
       imgLeft: -100,
       imgHeight: 64,
       imgWidth: 64,
-      changeInterval: 5000
+      changeInterval: 10000
     }
   },
   created() {
-    let interval = setInterval(() => this.addImage(), 250);
+    let interval = setInterval(() => this.addImage(), 500);
     setTimeout(() => clearInterval(interval), this.changeInterval);
-    setInterval(this.randomImage, 250);
-    setInterval(this.randomPosition, 250);
+    setInterval(this.randomImage, 500);
+    setInterval(this.randomPosition, 500);
   },
   methods: {
     randomImage() {
@@ -45,14 +45,14 @@ export default {
       this.selectedImage = this.images[idx];
     },
     randomPosition() {
-      this.imgLeft = Math.round(Math.random() * (window.innerWidth - this.imgWidth));
-      this.imgTop = Math.round(Math.random() * ((window.innerHeight/10) - this.imgTop));
+      this.imgLeft = Math.round(Math.random() * 95 ) + 1;
+      this.imgTop = Math.round(Math.random() * 5 ) + 1;
     },
     addImage() {
       this.addedImage.push({
         style: {
-          top: `${this.imgTop}px`,
-          left: `${this.imgLeft}px`,
+          top: `${this.imgTop}%`,
+          left: `${this.imgLeft}%`,
           height: `${this.imgHeight}px`,
           width: `${this.imgWidth}px`
         },
