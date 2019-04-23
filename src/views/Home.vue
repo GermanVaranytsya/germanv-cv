@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from '@/components/MainPage'
 import RandImg from '@/components/RandImg'
 import LoadingPage from '@/components/LoadingPage'
 

@@ -29,26 +29,28 @@ export default {
       imgTop: -100,
       imgLeft: -100,
       imgHeight: 64,
-      imgWidth: 64,
-      changeInterval: 10000
+      imgWidth: 64
     }
   },
   created() {
-    let interval = setInterval(() => this.addImage(), 500);
-    setTimeout(() => clearInterval(interval), this.changeInterval);
-    setInterval(this.randomImage, 500);
-    setInterval(this.randomPosition, 500);
+    const interval = setInterval(() => {
+      this.addRandomImage();
+      this.randomPosition();
+    }, 500);
+    setTimeout(() => clearInterval(interval), 10000);
   },
   methods: {
-    randomImage() {
-      const idx = Math.floor(Math.random() * this.images.length);
-      this.selectedImage = this.images[idx];
-    },
     randomPosition() {
-      this.imgLeft = Math.round(Math.random() * 95 ) + 1;
-      this.imgTop = Math.round(Math.random() * 5 ) + 1;
+      //adding random position left, top
+      this.imgLeft = Math.round(Math.random() * 95) + 1;
+      this.imgTop = Math.round(Math.random() * 5) + 1;
     },
-    addImage() {
+    addRandomImage() {
+      //adding random image
+      const selectedImage = this.images[
+        Math.floor(Math.random() * this.images.length)
+        ];
+      //adding image to new array
       this.addedImage.push({
         style: {
           top: `${this.imgTop}%`,
@@ -56,7 +58,7 @@ export default {
           height: `${this.imgHeight}px`,
           width: `${this.imgWidth}px`
         },
-        src: this.selectedImage
+        src: selectedImage
       });
     }
   }
