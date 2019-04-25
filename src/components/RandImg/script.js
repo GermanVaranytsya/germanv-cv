@@ -33,12 +33,12 @@ export default {
     }
   },
   created() {
-    const timeout = window.innerWidth > 400 ? 500 : 1000;
+    const timeout = window.innerWidth > 400 ? 100 : 1000;
     const interval = setInterval(() => {
       this.addRandomImage();
       this.randomPosition();
     }, timeout);
-    setTimeout(() => clearInterval(interval), 12000);
+    setTimeout(() => clearInterval(interval), 10000);
   },
   methods: {
     randomPosition() {
